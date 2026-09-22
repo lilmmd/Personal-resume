@@ -6,6 +6,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=50)
     job_title = models.CharField(max_length=50, null=True)
     description = models.TextField(null=True)
+    interests = models.TextField(null=True)
 
 
 class Experience(models.Model): 

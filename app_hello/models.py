@@ -42,3 +42,17 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=70, null=True)
     description = models.CharField(max_length=70, null=True)
+
+
+
+class Skill(models.Model):
+    LEVEL_CHOISES = [
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+    ]
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=70, null=True)
+    level = models.PositiveSmallIntegerField(null=True, choices= LEVEL_CHOISES, default= LEVEL_CHOISES[0])

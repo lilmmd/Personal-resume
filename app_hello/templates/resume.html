@@ -244,7 +244,7 @@
 
     {% if user.project_set.exists %}
     <div class="section">
-     {% for pr in user.project_set.all  %}
+      {% for pr in user.project_set.all %}
       <div class="section__title">Projects</div>
 
       <div class="section__list">
@@ -252,75 +252,55 @@
           <div class="name">{{pr.title}}</div>
 
           <div class="text">
-          {{pr.description}}
+            {{pr.description}}
             <a href="/login">link</a>
           </div>
         </div>
       </div>
-     {% endfor %}
+      {% endfor %}
     </div>
-    {% endif %}
-
+    {% endif %} 
+    {% if user.skill_set.exists %}
     <div class="section">
       <div class="section__title">Skills</div>
 
       <div class="skills">
+        {% for skill in user.skill_set.all %}
         <div class="skills__item">
           <div class="left">
-            <div class="name">Javascript</div>
+            <div class="name">{{skill.title}}</div>
           </div>
 
           <div class="right">
-            <input id="ck1" type="checkbox" checked />
+            <input id="ck1" type="checkbox" {% if skill.level >= 1 %} checked {% endif %}  />
             <label for="ck1"></label>
 
-            <input id="ck2" type="checkbox" checked />
+            <input id="ck2" type="checkbox" {% if skill.level >= 2 %} checked {% endif %} />
             <label for="ck2"></label>
 
-            <input id="ck3" type="checkbox" />
+            <input id="ck3" type="checkbox" {% if skill.level >= 3 %} checked {% endif %} />
             <label for="ck3"></label>
 
-            <input id="ck4" type="checkbox" />
+            <input id="ck4" type="checkbox" {% if skill.level >= 4 %} checked {% endif %} />
             <label for="ck4"></label>
 
-            <input id="ck5" type="checkbox" />
+            <input id="ck5" type="checkbox" {% if skill.level == 5 %} checked {% endif %} />
             <label for="ck5"></label>
           </div>
         </div>
-      </div>
-
-      <div class="skills__item">
-        <div class="left">
-          <div class="name">CSS</div>
-        </div>
-
-        <div class="right">
-          <input id="ck1" type="checkbox" checked />
-          <label for="ck1"></label>
-
-          <input id="ck2" type="checkbox" checked />
-          <label for="ck2"></label>
-
-          <input id="ck3" type="checkbox" />
-          <label for="ck3"></label>
-
-          <input id="ck4" type="checkbox" />
-          <label for="ck4"></label>
-
-          <input id="ck5" type="checkbox" />
-          <label for="ck5"></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      {% if user.profile.interests %}
-      <div class="section__title">Interests</div>
-
-      <div class="section__list">
-        <div class="section__list-item">{{ user.profile.interests }}</div>
+        {% endfor %}
       </div>
       {% endif %}
+
+      <div class="section">
+        {% if user.profile.interests %}
+        <div class="section__title">Interests</div>
+
+        <div class="section__list">
+          <div class="section__list-item">{{ user.profile.interests }}</div>
+        </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>

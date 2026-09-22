@@ -242,32 +242,24 @@
       </div>
     </div>
 
+    {% if user.project_set.exists %}
     <div class="section">
+     {% for pr in user.project_set.all  %}
       <div class="section__title">Projects</div>
 
       <div class="section__list">
         <div class="section__list-item">
-          <div class="name">DSP</div>
+          <div class="name">{{pr.title}}</div>
 
           <div class="text">
-            I am a front-end developer with more than 3 years of experience
-            writing html, css, and js. I'm motivated, result-focused and seeking
-            a successful team-oriented company with opportunity to grow.
-          </div>
-        </div>
-
-        <div class="section__list-item">
-          <div class="name">DSP</div>
-
-          <div class="text">
-            I am a front-end developer with more than 3 years of experience
-            writing html, css, and js. I'm motivated, result-focused and seeking
-            a successful team-oriented company with opportunity to grow.
+          {{pr.description}}
             <a href="/login">link</a>
           </div>
         </div>
       </div>
+     {% endfor %}
     </div>
+    {% endif %}
 
     <div class="section">
       <div class="section__title">Skills</div>

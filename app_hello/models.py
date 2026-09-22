@@ -36,3 +36,9 @@ class Education(models.Model):
     @property
     def pretified_degree(self):
         return dict(self.DEGREE_CHOISES).get(self.degree)
+
+
+class Project(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=70, null=True)
+    description = models.CharField(max_length=70, null=True)

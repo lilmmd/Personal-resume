@@ -177,53 +177,55 @@ body {
     </div>
   </div>
    <div class="details">
-    {% if user.experience_set.exsits %}
+    {% if user.experience_set.exists %}
+
     <div class="section">
       <div class="section__title">Experience</div>
+
       {% for ex in user.experience_set.all %}
-        <div class="section__list">
-        <div class="section__list-item">
-          <div class="left">
-            <div class="name">{{ex.title}}</div>
-            <div class="addr">{{ex.location}}</div>
-            <div class="duration">{{ex.duration}}</div>
-          </div>
-          <div class="right">
-            <div class="name">{{ex.position}}</div>
-            <div class="desc">{{ex.job_discription}}</div>
-          </div>
-        </div>
-      </div>
-      <br/>
-      <br/>
-      {% endfor %}
-    </div>
-    {% endif %}
-    <div class="section">
-      <div class="section__title">Education</div>
+
       <div class="section__list">
         <div class="section__list-item">
           <div class="left">
-            <div class="name">Sample Institute of technology</div>
-            <div class="addr">San Fr, CA</div>
-            <div class="duration">Jan 2011 - Feb 2015</div>
+            <div class="name">{{ ex.title }}</div>
+
+            <div class="addr">{{ ex.location }}</div>
+
+            <div class="duration">{{ ex.date_range }}</div>
           </div>
+
           <div class="right">
-            <div class="name">Fr developer</div>
-            <div class="desc">did This and that</div>
+            <div class="name">{{ ex.position }}</div>
+
+            <div class="desc">{{ ex.job_description }}</div>
           </div>
         </div>
-        <div class="section__list-item">
+      </div>
+
+      <br />
+      <br />
+
+      {% endfor %}
+    </div>
+
+    {% endif %}
+
+    <div class="section">
+      <div class="section__title">Education</div>
+      <div class="section__list">
+        {% for ed in user.education_set.all  %}
+          <div class="section__list-item">
           <div class="left">
-            <div class="name">Akount</div>
-            <div class="addr">San Monica, CA</div>
-            <div class="duration">Jan 2011 - Feb 2015</div>
+            <div class="name">{{ed.university}}</div>
+            <div class="addr">{{ed.location}}</div>
+            <div class="duration">{{ed.duration}}</div>
           </div>
           <div class="right">
-            <div class="name">Fr developer</div>
-            <div class="desc">did This and that</div>
+            <div class="name">{{ed.pretified_degree}}</div>
+            <div class="desc">{{ed.study_discription}}</div>
           </div>
         </div>
+        {% endfor %}
 
       </div>
       

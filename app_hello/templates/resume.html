@@ -213,9 +213,6 @@
         </div>
       </div>
 
-      <br />
-      <br />
-
       {% endfor %}
     </div>
 
@@ -244,8 +241,9 @@
 
     {% if user.project_set.exists %}
     <div class="section">
-      {% for pr in user.project_set.all %}
+      
       <div class="section__title">Projects</div>
+      {% for pr in user.project_set.all %}
 
       <div class="section__list">
         <div class="section__list-item">
@@ -257,6 +255,7 @@
           </div>
         </div>
       </div>
+      <br>
       {% endfor %}
     </div>
     {% endif %} 
